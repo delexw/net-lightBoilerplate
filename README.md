@@ -1,4 +1,4 @@
-# .NET Light Boilterplate 
+# .NET Light Boilerplate 
 This Boilterplate is meant to speed up the build for new .NET Web Solutions based on a readable & scalable software architecture. Current version is beta version. 
 An example is included in the current version of boilterplate which using SQLite as database.
 ## Backend
