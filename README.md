@@ -23,10 +23,10 @@ An example is included in the current version of boilterplate which using SQLite
   - Domain (Commnads, Command Handlers, Events, Event Handlers, Entities & EventBus)
   - Infrasturcture (Repositories, ErrorHandler, Logger, DIManager & Database providers)
 - Contract & Interface
-  - Contract in AgeRanger is the only interface used by Autofac by giving a readable configuration. Contract sometimes inherits interface otherwise it dosen't make any sense
-  - Interface in AgeRanger is the typical interface....
+  - Contract in boilerplate is the only interface used by Autofac by giving a readable configuration. Contract sometimes inherits interface otherwise it dosen't make any sense
+  - Interface in boilerplate is the typical interface....
 - CQRS (Command/Event/EventBus)
-  - Each of database providers should have 2 Dbcontext refering to write side and read side, for instance, AgeRanger.SQLite in AgeRanger, AgeRangerDbContext is for read side and AgeRangerWriterDbContext is for write side. Write side and read side are using same database in current circumstance. It can be configured in Web.config/connectionString :
+  - Each of database providers should have 2 Dbcontext refering to write side and read side, for instance, Light.SQLite in AgeRanger, AgeRangerDbContext is for read side and AgeRangerWriterDbContext is for write side. Write side and read side are using same database in current circumstance. It can be configured in Web.config/connectionString :
   ```
   <connectionStrings>
     <add name="AgeRangerDB" connectionString="data source=|DataDirectory|\sqlite\AgeRanger.db;foreign keys=true" providerName="System.Data.SQLite" />
