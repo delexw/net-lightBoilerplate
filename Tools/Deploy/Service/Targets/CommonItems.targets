@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!-- Config items -->
+  <ItemGroup>
+    <OtherConfig Include="Other">
+      <compilationDebug>false</compilationDebug>
+      <dataBaseConnectString>data source=|DataDirectory|\sqlite\$(DataBaseName).db%3Bforeign keys=true</dataBaseConnectString>
+      <dataBaseWriterConnectString>data source=|DataDirectory|\sqlite\$(DataBaseName).db%3Bforeign keys=true</dataBaseWriterConnectString>
+      <directoryBrowse>false</directoryBrowse>
+    </OtherConfig>
+  </ItemGroup>
+
+  <!--<UsingTask TaskName="TaskCurrentDate.CurrentDate"
+      AssemblyFile="TaskCurrentDate.dll"/>-->
+  <Target Name="BeforeBackup">
+    <!--<CurrentDate>
+      <Output TaskParameter="CDate" PropertyName="TaskTime"/>
+    </CurrentDate>-->
+
+    <CreateProperty
+         Value="$(BackupCommandProxy) $(AuthenticationParam)" Condition="$(AuthenticationParam) != ''">
+      <Output
+          TaskParameter="Value"
+          PropertyName="BackupCommandProxy" />
+    </CreateProperty>
+
+  </Target>
+
+  <Target Name="Backup" DependsOnTargets="BeforeBackup">
+    <MakeDir
+         Directories="$(BackupRootProxy)$(DeployIisAppPathProxy)" Condition="!Exists('$(BackupRootProxy)$(DeployIisAppPathProxy)')"/>
+    <Exec Command="$(BackupCommandProxy)" ContinueOnError="true"/>
+  </Target>
+
+  <Target Name="BuildConfig">
+    <!-- Other -->
+    <Message Text="Set directoryBrowse..."></Message>
+    <XmlPoke
+      XmlInputPath="$(ProjectPathProxy)Web.config"
+      Query="//directoryBrowse/@enabled"
+      Value="%(OtherConfig.directoryBrowse)">
+    </XmlPoke>
+    <Message Text="Set compilation..."></Message>
+    <XmlPoke
+      XmlInputPath="$(ProjectPathProxy)Web.config"
+      Query="//compilation/@debug"
+      Value="%(OtherConfig.compilationDebug)">
+    </XmlPoke>
+    <Message Text="Set connectionString..."></Message>
+    <XmlPoke
+      XmlInputPath="$(ProjectPathProxy)Web.config"
+      Query="//connectionStrings[@name='AgeRangerDB']/@connectionString"
+      Value="%(OtherConfig.dataBaseConnectString)">
+    </XmlPoke>
+    <XmlPoke
+      XmlInputPath="$(ProjectPathProxy)Web.config"
+      Query="//connectionStrings[@name='AgeRangerDBWriter']/@connectionString"
+      Value="%(OtherConfig.dataBaseConnectString)">
+    </XmlPoke>
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="BuildConfig">
+    <Message Text="$(VSToolsPath)"></Message>
+    <Message Text="$(VisualStudioVersion)"></Message>
+    <MSBuild Projects="$(ProjectPathProxy)$(ProjectFileProxy)" Properties="Configuration=Release;VisualStudioVersion=$(VisualStudioVersion);PackageLocation=$(PackageLocationRootProxy)$(PackageProxyZip).zip;DebugType=full;DebugSymbols=true;Optimize=true;DeployIisAppPath=$(DeployIisAppPathProxy)" ToolsVersion="$(MSBuildToolsVersion)" Targets="Package"/>
+  </Target>
+
+  <Target Name="BeforeDeploy" DependsOnTargets="Build">
+    <Exec Command="$(DeployCommandProxy)" />
+  </Target>
+
+  <Target Name="Deploy" DependsOnTargets="Backup;BeforeDeploy">
+    <Exec Command="$(PackageLocationRootProxy)$(PackageProxyZip)$(DeployCommandSuffix) /y" />
+
+  </Target>
+
+  <Target Name="CopyFile" AfterTargets="Deploy">
+  </Target>
+</Project>

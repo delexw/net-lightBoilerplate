@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildPathDefined>C:\Windows\Microsoft.NET\Framework64\v4.0.30319</MSBuildPathDefined>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <!-- Build property -->
+  <PropertyGroup>
+    <ProjectFileProxy>Light.WebAPI.csproj</ProjectFileProxy>
+    <ProjectPathProxy>..\..\..\Presentation\Light.WebAPI\</ProjectPathProxy>
+  </PropertyGroup>
+  <!-- Deploy property-->
+  <PropertyGroup>
+    <DeployCommandBat>Deploy.bat</DeployCommandBat>
+    <DeployCommandProxy>$(DeployCommandBat) "$(DeployIisAppPathProxy)" $(AuthenticationParam)</DeployCommandProxy>
+    <DeployCommandSuffix>.deploy.cmd</DeployCommandSuffix>
+    <DeployParametersSuffix>.SetParameters.xml</DeployParametersSuffix>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <BackupCommandBat>Backup.bat</BackupCommandBat>
+    <BackupCommandSuffix>.zip</BackupCommandSuffix>
+    <BackupCommandProxy>$(BackupCommandBat) "$(DeployIisAppPathProxy)" "$(BackupRootProxy)$(DeployIisAppPathProxy)\$(PackageProxyZip)$(TaskTime)$(BackupCommandSuffix)"</BackupCommandProxy>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLocationRootProxy>$(PackageLocationRoot)Proxy\</PackageLocationRootProxy>
+    <PackageProxyZip>light_api</PackageProxyZip>
+  </PropertyGroup>
+</Project>

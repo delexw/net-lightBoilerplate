@@ -1,0 +1,47 @@
+<div ng-controller="PersonCtrl">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." ng-model="queryfilter">
+        <span class="input-group-btn">
+        <label class="btn btn-default " ng-click="refresh()">
+		        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </label>
+      </div>
+      <!-- /input-group -->
+      <!-- /input-group -->
+    </div>
+    <div class="col-xs-2">
+      <button type="button" class="btn btn-primary" ng-click="createPerson()">Create</button>
+    </div>
+  </div>
+  <br/>
+  <table class="table table-hover table-condensed table-striped">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Group</th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="person in persons">
+      <td>{{person.firstName}}</td>
+      <td>{{person.lastName}}</td>
+      <td>{{person.age}}</td>
+      <td>{{person.group}}</td>
+      <td><button type="button" class="btn btn-primary" ng-click="editPerson(persons[$index])">Edit</button></td>
+    </tr>
+  </table>
+  <div class="row">
+    <div class="col-xs-12">
+      <nav aria-label="...">
+        <ul class="pager">
+          <li class="previous"><a href="" ng-click="changePage('back')"><span aria-hidden="true"></span>« Previous</a>
+          </li>
+          <li class="next"><a href="" ng-click="changePage('next')">Next »<span aria-hidden="true"></span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>

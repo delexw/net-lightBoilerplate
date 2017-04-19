@@ -1,0 +1,40 @@
+﻿{
+  "components": [
+    {
+      //Register dbcontext read side
+      "type": "Light.SQLite.AgeRangerDbContext, Light.SQLite",
+      "services": [
+        {
+          "type": "Light.DataContracts.DataBase.IAgeRangerReaderDbContextContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    },
+    {
+      //Register person reader repository
+      "type": "Light.Repositories.Readers.PersonReaderRepository, Light.Repositories",
+      "services": [
+        {
+          "type": "Light.DataContracts.Repositories.IPersonReaderRepositoryContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    },
+    {
+      //Register agegroup reader repository
+      "type": "Light.Repositories.Readers.AgeGroupReaderRepository, Light.Repositories",
+      "services": [
+        {
+          "type": "Light.DataContracts.Repositories.IAgeGroupReaderRepositoryContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    }
+  ]
+}

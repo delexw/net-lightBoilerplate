@@ -1,0 +1,8 @@
+﻿{
+  "modules": [
+    {
+      "type": "Light.Event.AutofacModules.EventHandlerRegister, Light.Event"
+    }
+  ]
+
+}

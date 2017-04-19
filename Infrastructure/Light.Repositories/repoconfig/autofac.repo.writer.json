@@ -1,0 +1,40 @@
+﻿{
+  "components": [
+    {
+      //Register dbcontext write side
+      "type": "Light.SQLite.AgeRangerWriterDbContext, Light.SQLite",
+      "services": [
+        {
+          "type": "Light.DataContracts.DataBase.IAgeRangerWriterDbContextContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    },
+    {
+      //Register person writer repository
+      "type": "Light.Repositories.Writers.PersonWriterRepository, Light.Repositories",
+      "services": [
+        {
+          "type": "Light.DataContracts.Repositories.IPersonWriterRepositoryContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    },
+    {
+      //Register agegroup writer repository
+      "type": "Light.Repositories.Writers.AgeGroupWriterRepository, Light.Repositories",
+      "services": [
+        {
+          "type": "Light.DataContracts.Repositories.IAgeGroupWriterRepositoryContract, Light.DataContracts"
+        }
+      ],
+      "autoActivate": true,
+      "instanceScope": "perdependency",
+      "ownership": "lifetimescope"
+    }
+  ]
+}
