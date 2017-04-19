@@ -1,7 +1,7 @@
 # .NET Light Boilterplate 
 This Boilterplate is meant to speed up the build for new .NET Web Solutions based on a readable & scalable software architecture. Current version is beta version. 
 ## Backend
-- Entity Framework 6 Code First and SQLite extensions
+- Entity Framework 6 Code First (support Database migration)
 - Autofac
 - [Dynamic Linq](https://github.com/kahanu/System.Linq.Dynamic)
 - AutoMapper
