@@ -19,7 +19,8 @@ An example is included in the current version of boilterplate which using SQLite
 ## Design 
 - Domain Driven Design(DDD)
   - Presentation (WebAPI & WebAPP)
-  - Application (Application services & DTOs)
+
+- Application (Application services & DTOs)
   - Domain (Commnads, Command Handlers, Events, Event Handlers, Entities & EventBus)
   - Infrasturcture (Repositories, ErrorHandler, Logger, DIManager & Database providers)
 - Contract & Interface
@@ -72,3 +73,4 @@ An example is included in the current version of boilterplate which using SQLite
 6. Don't forget to find file "config.js" in folder scripts and change the api base url
 ## TODO
 - Authentication & Authorization is not there.
+- Expression Converter for orderBy
