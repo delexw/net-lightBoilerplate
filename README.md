@@ -72,5 +72,5 @@ An example is included in the current version of boilterplate which using SQLite
 5. Check the folder dist
 6. Don't forget to find file "config.js" in folder scripts and change the api base url
 ## TODO
-- Authentication & Authorization is not there.
+- Authentication & Authorization is not there (e.g. Json Token).
 - Expression Converter for orderBy
