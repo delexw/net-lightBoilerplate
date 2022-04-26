@@ -2,7 +2,7 @@
   "name": "age-ranger",
   "private": true,
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
+    "autoprefixer-core": "^6.0.1",
     "generator-karma-require": "^1.1.0",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.0.0",
