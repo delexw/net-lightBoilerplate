@@ -11,6 +11,6 @@ updates:
       interval: "daily"
   
   - package-ecosystem: "npm"
-    directory: "/Application/Light.Application/package.json"
+    directory: "/Application/Light.Application"
     schedule:
       interval: "daily"
