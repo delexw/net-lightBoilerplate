@@ -11,6 +11,6 @@ updates:
       interval: "daily"
   
   - package-ecosystem: "npm"
-    directory: "/Application/Light.Application"
+    directory: "/Presentation/App"
     schedule:
       interval: "daily"
